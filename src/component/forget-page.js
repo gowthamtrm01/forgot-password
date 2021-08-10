@@ -20,7 +20,7 @@ const ForgetPage = () => {
             console.log(match);
             setMatchFound("The token was send to your email");
             setNoMatch('');
-            axios.post('http://localhost:5000/sendmail', { email: match.email, id: match.id, secret: "itachi" })
+            axios.post('https://password-flow.herokuapp.com/sendmail', { email: match.email, id: match.id, secret: "itachi" })
                 .then((res) => {
                     match.token = res.data.token;
                     dispatch({

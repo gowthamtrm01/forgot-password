@@ -15,12 +15,12 @@ app.post('/sendmail', (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'gowthamitachi.uchiha@gmail.com',
-            pass: 'shadowhokage@0102'
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
         }
     })
     const mailOption = {
-        from: "gowthamitachi.uchiha@gmail.com",
+        from: process.env.EMAIL,
         to: email,
         subject: "Forgot password link",
         text: token,
