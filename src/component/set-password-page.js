@@ -14,18 +14,17 @@ const SetNewPassword = () => {
     const [invalid, setInvalid] = useState();
     const onSubmit = (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
+        if (password !== confirmPassword) {                                   // checking password var and confirm password both are same or not
             setError("Password was you entered above does not match")
         } else if (password === confirmPassword) {
             setError('');
             currentUser.password = password;
             currentUser.token = "";
-            console.log("password change: ", currentUser);
             dispatch({
                 type: "UPDATE",
                 payload: currentUser
             })
-            setMessage("Password was reseted");
+            setMessage("Password was reseted"); // after submit giving the notification
 
         }
     }
@@ -40,7 +39,7 @@ const SetNewPassword = () => {
 
     return (
         <div>
-            {!invalid ? (
+            {!invalid ? ( // if token was not match giving message
                 <div className="center">
                     {message && <Alert variant="info" style={{ width: '400px', display: 'inline-block' }} >{message}</Alert>}
                     <Form onSubmit={(e) => { onSubmit(e) }}>

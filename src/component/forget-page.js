@@ -11,13 +11,13 @@ const ForgetPage = () => {
     const { state, dispatch } = useContext(emailContext);
     const [email, setEmail] = useState();
     const [matchFound, setMatchFound] = useState();
-    const [notMatch, setNoMatch] = useState();
+    const [notMatch, setNoMatch] = useState(); // using usestate for alert
 
     const onsubmit = (e) => {
         e.preventDefault();
         const match = state.find((user) => user.email === email);
         if (match) {
-            console.log(match);
+
             setMatchFound("The token was send to your email");
             setNoMatch('');
             axios.post('https://password-flow.herokuapp.com/sendmail', { email: match.email, id: match.id, secret: "itachi" })
@@ -27,8 +27,6 @@ const ForgetPage = () => {
                         type: "UPDATE",
                         payload: match
                     })
-                    console.log(match);
-                    console.log(state);
                 });
         } else {
             setNoMatch("Your Email was invalid");

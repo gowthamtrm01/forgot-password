@@ -29,8 +29,6 @@ export { emailContext };
 const AppRouter = () => {
 
 
-
-
   useEffect(() => {
     const found = localStorage.getItem("databasePF");
     if (!found) {
@@ -49,7 +47,7 @@ const AppRouter = () => {
         },
         {
           id: "1e0da6b2-e7f0-4578-9e65-e03f639dd3at",
-          email: "gowthamtrm01@gmail.com",
+          email: "gowthamtrm01@gmail.com", // you can switch your email here for send forgot password link
           token: "",
           password: "check"
         }
@@ -60,11 +58,10 @@ const AppRouter = () => {
 
 
 
-  const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem("databasePF")));
+  const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem("databasePF"))); // here im using local storage for storing data
 
   return (
     <Router>
-      {console.log(state)}
       <emailContext.Provider value={{ state, dispatch }}>
         <Switch>
           <Route exact path='/'>
